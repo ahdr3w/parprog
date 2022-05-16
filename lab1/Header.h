@@ -3,7 +3,7 @@
 #include<math.h>
 #include<mpi.h>
 #include<time.h>
-
+#include<fstream>
 class problem{
 public:
 	int K, M;
