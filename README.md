@@ -1,4 +1,6 @@
 # parprog
+ГРафики:
+https://colab.research.google.com/drive/1TKnrvkUSgGiApxL-g-aVoqRCfMYg49DP?usp=sharing
 В программе реализована схема прямоугольник
 
 Задача:
