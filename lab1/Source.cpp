@@ -172,7 +172,7 @@ int main(int argc, char* argv[]) {
 		float** u1 = par_alg(p, commsize, my_rank);
 		if (my_rank == 0) {
 		//	float** u2 = lin_alg(p);
-		//	cout << "maxdif: " << compare(p, u1, u2) << " "; //ëèíåéíûé àëãîðèòì
+		//	cout << "maxdif: " << compare(p, u1, u2) << " "; //Ã«Ã¨Ã­Ã¥Ã©Ã­Ã»Ã© Ã Ã«Ã£Ã®Ã°Ã¨Ã²Ã¬
 		//	del(u2, p);
 		}
 		if (my_rank == 0) del(u1, p);
@@ -182,6 +182,20 @@ int main(int argc, char* argv[]) {
 		cout << endl;
 		for (int k = 1; k <= 10; k++)
 			cout << k * 1000 << ", ";
+	}
+	MPI_Barrier(MPI_COMM_WORLD);
+	problem* pr = new problem(1000, 3000);
+	float** u3 = par_alg(pr, commsize, my_rank);
+	if (my_rank == 0) {
+		ofstream fout("datagraph.txt");
+		for (int k = 0; k <= pr->K; k++) {
+			for (int m = 0; m <= pr->M; m++)
+				fout << u3[k][m] << " ";
+			fout << endl;
+		}
+		fout.close();
+		del(u3, pr);
+		delete pr;
 	}
 	MPI_Finalize();
 	
