@@ -189,9 +189,10 @@ int main(int argc, char* argv[]) {
 	if (my_rank == 0) {
 		ofstream fout("datagraph.txt");
 		for (int k = 0; k <= pr->K; k++) {
+			fout << "[";
 			for (int m = 0; m <= pr->M; m++)
-				fout << u3[k][m] << " ";
-			fout << endl;
+				fout << u3[k][m] << ", ";
+			fout << "]," << endl;
 		}
 		fout.close();
 		del(u3, pr);
